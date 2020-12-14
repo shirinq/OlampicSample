@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import {Button} from 'react-native-paper';
 import {buttonTheme} from './Theme';
 import {LOGIN_PAGE} from './Const';
@@ -7,6 +7,7 @@ import {LOGIN_PAGE} from './Const';
 export default function ChooseLang({navigation }) {
    return (
       <View style={styles.container}>
+         <StatusBar barStyle="dark-content" backgroundColor="#fff" />
          <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
             Eng
          </Button>

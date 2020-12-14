@@ -4,9 +4,9 @@ const fontConfig = {
    default: {
       regular: {
          fontFamily: 'iran-sans',
-         fontWeight: 'normal',
+         fontWeight: 'normal'
       }
-   },
+   }
 };
 
 export const mainTheme = {
@@ -15,12 +15,12 @@ export const mainTheme = {
    colors: {
       ...DefaultTheme.colors,
       primary: '#ffffff',
-      accent: '#000000',
+      accent: '#000000'
    },
-   fonts:configureFonts(fontConfig),
+   fonts: configureFonts(fontConfig),
    animation: {
-      scale: 1.0,
-   },
+      scale: 1.0
+   }
 };
 
 export const buttonTheme = {
@@ -37,23 +37,31 @@ export const buttonTheme = {
 export const whiteHeader = {
    headerStyle: {
       backgroundColor: '#ffffff',
-      elevation:0
+      elevation: 0
    },
    headerTintColor: '#000000',
-   headerTitleStyle:{
-      fontSize:20,
+   headerTitleStyle: {
+      fontSize: 20,
       fontFamily: 'iran-sans'
    }
-}
+};
 
 export const blackHeader = {
    headerStyle: {
       backgroundColor: '#000000',
-      elevation:0
+      elevation: 0
    },
    headerTintColor: '#ffffff',
-   headerTitleStyle:{
-      fontSize:20,
+   headerTitleStyle: {
+      fontSize: 20,
       fontFamily: 'iran-sans'
    }
-}
+};
+
+export const whitTextInput = {
+   colors: {
+      primary: '#171717',
+      accent: '#ffffff',
+      text: '#000000'
+   }
+};

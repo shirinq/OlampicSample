@@ -1,14 +1,15 @@
 import * as React from 'react';
-import {Provider as PaperProvider, Text} from 'react-native-paper';
+import {Provider as PaperProvider} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import ChooseLang from './src/ChooseLang';
 import {blackHeader, mainTheme, whiteHeader} from './src/Theme';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
 import Login from './src/Login';
 import {LOGIN_PAGE, CHOOSE_LANG_PAGE} from './src/Const';
+import {I18nManager} from 'react-native';
 
 const fetchFonts = () => {
    return Font.loadAsync({
@@ -20,8 +21,11 @@ export default function App() {
    const [fontLoaded, setFontLoaded] = useState(false);
    const Stack = createStackNavigator();
 
+   useEffect(()=>{
+      I18nManager.forceRTL(true);
+   },[])
+
    if (!fontLoaded) {
-      console.log(fontLoaded)
       return (
          <AppLoading
             startAsync={fetchFonts}
