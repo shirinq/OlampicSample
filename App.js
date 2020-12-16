@@ -7,8 +7,8 @@ import {blackHeader, mainTheme, whiteHeader} from './src/Theme';
 import {useEffect, useState} from 'react';
 import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
-import Login from './src/Login';
-import {LOGIN_PAGE, CHOOSE_LANG_PAGE} from './src/Const';
+import Sign from './src/sign';
+import {SIGN_PAGE, CHOOSE_LANG_PAGE} from './src/Const';
 import {I18nManager} from 'react-native';
 
 const fetchFonts = () => {
@@ -39,7 +39,7 @@ export default function App() {
          <NavigationContainer>
             <Stack.Navigator>
                <Stack.Screen name={CHOOSE_LANG_PAGE} component={ChooseLang} options={{...whiteHeader, title: 'زبان مورد نظر خود را انتخاب کنید'}}/>
-               <Stack.Screen name={LOGIN_PAGE} component={Login} options={{...blackHeader, title: 'ورود'}}/>
+               <Stack.Screen name={SIGN_PAGE} component={Sign} options={{...blackHeader, title: 'خوش آمدید'}}/>
             </Stack.Navigator>
          </NavigationContainer>
       </PaperProvider>

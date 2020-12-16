@@ -2,25 +2,25 @@ import React from 'react';
 import {StatusBar, StyleSheet, View} from 'react-native';
 import {Button} from 'react-native-paper';
 import {buttonTheme} from './Theme';
-import {LOGIN_PAGE} from './Const';
+import {SIGN_PAGE} from './Const';
 
 export default function ChooseLang({navigation }) {
    return (
       <View style={styles.container}>
          <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
+         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(SIGN_PAGE)}>
             Eng
          </Button>
-         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
+         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(SIGN_PAGE)}>
             عربی
          </Button>
-         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
+         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(SIGN_PAGE)}>
             Turkish
          </Button>
-         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
+         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(SIGN_PAGE)}>
             کردی
          </Button>
-         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
+         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(SIGN_PAGE)}>
             فارسی
          </Button>
       </View>
