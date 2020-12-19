@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Button, Card, Text, TextInput} from 'react-native-paper';
 import {buttonTheme, whitTextInput} from '../Theme';
@@ -6,8 +6,8 @@ import {CodeField, Cursor, useBlurOnFulfill, useClearByFocusCell} from 'react-na
 import {strongRegex} from '../Const';
 
 
-const SignUp = ({navigation}) => {
-   const [phone, setPhone] = useState();
+const SignUp = ({navigation, setSignIn}) => {
+   const [phone, setPhone] = useState('');
    const [code, setCode] = useState('');
    const [password, setPassword] = useState();
    const [confPassword, setConfPassword] = useState();
@@ -20,16 +20,12 @@ const SignUp = ({navigation}) => {
 
    const handlePassChange = text => {
       setPassword(text);
-      if (!strongRegex.test(text) && text !== '')
-         setPassError(true);
-      else setPassError(false);
+      setPassError(!strongRegex.test(text) && text !== '');
    };
 
    const handleConfPassChange = text => {
       setConfPassword(text);
-      if (!strongRegex.test(text) && text !== '' && confPassword !== password)
-         setConfError(true);
-      else setConfError(false);
+      setConfError(!strongRegex.test(text) || (text !== password));
    };
 
    return (
@@ -38,18 +34,24 @@ const SignUp = ({navigation}) => {
             <Text style={{marginBottom: 20}}>برای ثبت نام در سامانه ابتدا شماره همراه خود را بدون کد کشور وارد کنید</Text>
             <TextInput
                mode='outlined'
-               style={{marginBottom: 20, textAlign: 'left'}}
+               style={{marginBottom: 20}}
                keyboardType={'numeric'}
                label="موبایل"
+               right={<Text style={{color: '#000'}}>+98</Text>}
                maxLength={10}
-               right={<Text>+98</Text>}
                theme={whitTextInput}
                placeholder='شماره موبایل بدون صفر وارد کنید'
                value={phone}
                onChangeText={text => setPhone(text)}/>
-            <Button disabled={!phone} theme={buttonTheme} icon='arrow-right' mode="contained" onPress={() => setStep(step + 1)}>
-               بعدی
-            </Button>
+            <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+               <Button disabled={phone.length !== 10} theme={buttonTheme} style={{flex: 2}} icon='arrow-right' mode="contained" onPress={() => setStep(step + 1)}>
+                  بعدی
+               </Button>
+               <View style={{flex: 1}}></View>
+               <Button theme={buttonTheme} style={{flex: 2}} icon={{source: 'arrow-left', direction: 'ltr'}} mode="contained" onPress={() => setSignIn(true)}>
+                  بازگشت
+               </Button>
+            </View>
          </View>}
          {step === 2 && <View>
             <Text style={{marginBottom: 20}}>{`کد 4 رقمی ارسال شده به شماره ${phone} را وارد کنید`}</Text>
@@ -71,9 +73,15 @@ const SignUp = ({navigation}) => {
                   </Text>
                )}
             />
-            <Button disabled={!code} theme={buttonTheme} icon='arrow-right' mode="contained" onPress={() => setStep(step + 1)}>
-               بعدی
-            </Button>
+            <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+               <Button disabled={code.length !== 4} theme={buttonTheme} style={{flex: 2}} icon='arrow-right' mode="contained" onPress={() => setStep(step + 1)}>
+                  بعدی
+               </Button>
+               <View style={{flex: 1}}></View>
+               <Button theme={buttonTheme} style={{flex: 2}} icon={{source: 'arrow-left', direction: 'ltr'}} mode="contained" onPress={() => setStep(step - 1)}>
+                  بازگشت
+               </Button>
+            </View>
          </View>}
          {step === 3 && <View>
             <Text style={{marginBottom: 20}}>رمز عبور شامل حروف و عدد را وارد کنید</Text>
@@ -81,7 +89,6 @@ const SignUp = ({navigation}) => {
                mode='outlined'
                style={{marginBottom: 20, textAlign: 'left'}}
                label="رمز عبور جدید"
-               maxLength={6}
                error={passError}
                theme={whitTextInput}
                placeholder='رمز عبور جدید خود را وارد کنید'
@@ -91,15 +98,54 @@ const SignUp = ({navigation}) => {
                mode='outlined'
                style={{marginBottom: 20, textAlign: 'left'}}
                label="تکرار رمز عبور"
-               maxLength={6}
                error={confError}
                theme={whitTextInput}
                placeholder='رمز عبور جدید خود را مجددا وارد کنید'
                value={confPassword}
                onChangeText={text => handleConfPassChange(text)}/>
-            <Button disabled={(!confError && passError)} theme={buttonTheme} icon='arrow-right' mode="contained" onPress={() => setStep(step + 1)}>
-               بعدی
-            </Button>
+            <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+               <Button disabled={(confError || passError) || (!confPassword || !password)} theme={buttonTheme} style={{flex: 2}} icon='arrow-right' mode="contained"
+                       onPress={() => setStep(step + 1)}>
+                  بعدی
+               </Button>
+               {/*<View style={{flex:1}}></View>
+                <Button theme={buttonTheme} style={{flex:2}} icon={{ source: "arrow-left", direction: 'ltr' }} mode="contained" onPress={() => setStep(step - 1)}>
+                بازگشت
+                </Button>*/}
+            </View>
+         </View>}
+
+         {step === 4 && <View>
+            <Text style={{marginBottom: 20}}>نام کاربری و کشور مودر نظر خود را انتخاب کنید</Text>
+            <TextInput
+               mode='outlined'
+               style={{marginBottom: 20, textAlign: 'left'}}
+               label="کشور"
+               autoComplete="off"
+               error={passError}
+               theme={whitTextInput}
+               placeholder='رمز عبور جدید خود را وارد کنید'
+               value={password}
+               onChangeText={text => handlePassChange(text)}/>
+            <TextInput
+               mode='outlined'
+               style={{marginBottom: 20, textAlign: 'left'}}
+               label="تکرار رمز عبور"
+               error={confError}
+               theme={whitTextInput}
+               placeholder='رمز عبور جدید خود را مجددا وارد کنید'
+               value={confPassword}
+               onChangeText={text => handleConfPassChange(text)}/>
+            <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+               <Button disabled={(confError || passError) || (!confPassword || !password)} theme={buttonTheme} style={{flex: 2}} icon='arrow-right' mode="contained"
+                       onPress={() => setStep(step + 1)}>
+                  بعدی
+               </Button>
+               {/*<View style={{flex:1}}></View>
+                <Button theme={buttonTheme} style={{flex:2}} icon={{ source: "arrow-left", direction: 'ltr' }} mode="contained" onPress={() => setStep(step - 1)}>
+                بازگشت
+                </Button>*/}
+            </View>
          </View>}
       </Card.Content>
    );
@@ -116,6 +162,7 @@ const styles = StyleSheet.create({
       borderWidth: 2,
       borderColor: '#2b2b2b',
       borderRadius: 9,
+      marginBottom: 20,
       textAlign: 'center'
    },
    focusCell: {

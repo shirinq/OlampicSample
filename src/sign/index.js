@@ -14,7 +14,7 @@ const Sign = () => {
          <StatusBar barStyle="light-content" backgroundColor="#000000"/>
          <LottieView style={styles.lottie} source={require('../assets/lottie/login.json')} autoPlay loop/>
          <Card style={styles.card}>
-            {signIn ? <SignIn setSignIn={setSignIn}/> : <SignUp/>}
+            {signIn ? <SignIn setSignIn={setSignIn}/> : <SignUp setSignIn={setSignIn}/>}
          </Card>
       </View>
    );
