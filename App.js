@@ -7,8 +7,10 @@ import {blackHeader, mainTheme, whiteHeader} from './src/Theme';
 import {useEffect, useState} from 'react';
 import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
-import Sign from './src/sign';
-import {SIGN_PAGE, CHOOSE_LANG_PAGE} from './src/Const';
+import Login from './src/login';
+import SignIn from './src/login/SignIn';
+import SignUp from './src/login/SignUp';
+import {LOGIN_PAGE, CHOOSE_LANG_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE} from './src/Const';
 import {I18nManager} from 'react-native';
 
 const fetchFonts = () => {
@@ -38,8 +40,10 @@ export default function App() {
       <PaperProvider theme={mainTheme}>
          <NavigationContainer>
             <Stack.Navigator>
-               <Stack.Screen name={CHOOSE_LANG_PAGE} component={ChooseLang} options={{...whiteHeader, title: 'زبان مورد نظر خود را انتخاب کنید'}}/>
-               <Stack.Screen name={SIGN_PAGE} component={Sign} options={{...blackHeader, title: 'خوش آمدید'}}/>
+               <Stack.Screen name={CHOOSE_LANG_PAGE} component={ChooseLang} options={{...whiteHeader, title: 'انتخاب زبان'}}/>
+               <Stack.Screen name={LOGIN_PAGE} component={Login} options={{...blackHeader, title: 'آناماکا'}}/>
+               <Stack.Screen name={SIGN_IN_PAGE} component={SignIn} options={{...whiteHeader, title: 'ورود به سامانه'}}/>
+               <Stack.Screen name={SIGN_UP_PAGE} component={SignUp} options={{...whiteHeader, title: 'ثبت نام'}}/>
             </Stack.Navigator>
          </NavigationContainer>
       </PaperProvider>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Button, Card, Text, TextInput} from 'react-native-paper';
-import {buttonTheme, whitTextInput} from '../Theme';
+import {buttonTheme, buttonWhiteTheme, whitTextInput} from '../Theme';
 import {CodeField, Cursor, useBlurOnFulfill, useClearByFocusCell} from 'react-native-confirmation-code-field';
 import {strongRegex} from '../Const';
 
@@ -30,7 +30,7 @@ const SignUp = ({navigation, setSignIn}) => {
 
    return (
       <Card.Content>
-         {step === 1 && <View>
+         {step === 1 && <View style={{flexDirection:'column', justifyContent:'center'}}>
             <Text style={{marginBottom: 20}}>برای ثبت نام در سامانه ابتدا شماره همراه خود را بدون کد کشور وارد کنید</Text>
             <TextInput
                mode='outlined'
@@ -45,9 +45,9 @@ const SignUp = ({navigation, setSignIn}) => {
                onChangeText={text => setPhone(text)}/>
             <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
                <Button disabled={phone.length !== 10} theme={buttonTheme} style={{flex: 2}} icon='arrow-right' mode="contained" onPress={() => setStep(step + 1)}>
-                  بعدی
+                  تایید
                </Button>
-               <View style={{flex: 1}}></View>
+               <View style={{flex: 2}}></View>
                <Button theme={buttonTheme} style={{flex: 2}} icon={{source: 'arrow-left', direction: 'ltr'}} mode="contained" onPress={() => setSignIn(true)}>
                   بازگشت
                </Button>
@@ -164,6 +164,22 @@ const styles = StyleSheet.create({
       borderRadius: 9,
       marginBottom: 20,
       textAlign: 'center'
+   },
+   backButtonStyle:{
+      borderRadius:0,
+      borderTopEndRadius: 20,
+      borderBottomEndRadius: 20,
+      flex:1,
+      borderWidth: 1,
+      borderColor: '#000000',
+      color: '#000',
+      backgroundColor: '#fff'
+   },
+   nextButtonStyle:{
+      borderRadius:0,
+      borderTopStartRadius: 20,
+      borderBottomStartRadius: 20,
+      flex:1
    },
    focusCell: {
       borderColor: '#000'
