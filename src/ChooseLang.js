@@ -5,25 +5,14 @@ import {buttonTheme} from './Theme';
 import {LOGIN_PAGE} from './Const';
 
 export default function ChooseLang({navigation}) {
+   const langs = ['Eng','عربی','Turkish','کردی','فارسی']
    return (
       <View style={styles.container}>
-         <Text style={{marginBottom:20}}>زبان مورد نظر خود را انتخاب کنید</Text>
+         <Text style={{marginBottom:20,fontSize: 23}}>زبان مورد نظر خود را انتخاب کنید</Text>
          <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
-            Eng
-         </Button>
-         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
-            عربی
-         </Button>
-         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
-            Turkish
-         </Button>
-         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
-            کردی
-         </Button>
-         <Button theme={buttonTheme} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
-            فارسی
-         </Button>
+         {langs.map((item, index)=><Button key={index} theme={buttonTheme} style={{padding:5}} mode="contained" onPress={() => navigation.navigate(LOGIN_PAGE)}>
+            {item}
+            </Button>)}
       </View>
    );
 }

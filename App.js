@@ -7,9 +7,9 @@ import {blackHeader, mainTheme, whiteHeader} from './src/Theme';
 import {useEffect, useState} from 'react';
 import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
-import Login from './src/login';
-import SignIn from './src/login/SignIn';
-import SignUp from './src/login/SignUp';
+import Login from './src/screens/login';
+import SignIn from './src/screens/login/SignIn';
+import SignUp from './src/screens/login/SignUp';
 import {LOGIN_PAGE, CHOOSE_LANG_PAGE, SIGN_IN_PAGE, SIGN_UP_PAGE} from './src/Const';
 import {I18nManager} from 'react-native';
 
@@ -23,9 +23,9 @@ export default function App() {
    const [fontLoaded, setFontLoaded] = useState(false);
    const Stack = createStackNavigator();
 
-   useEffect(()=>{
+  /* useEffect(()=>{
       I18nManager.forceRTL(true);
-   },[])
+   },[])*/
 
    if (!fontLoaded) {
       return (

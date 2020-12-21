@@ -69,7 +69,7 @@ const fontConfig = {
 
 export const mainTheme = {
    ...DefaultTheme,
-   roundness: 3,
+   roundness: 5,
    colors: {
       ...DefaultTheme.colors,
       primary: '#ffffff',
@@ -83,7 +83,6 @@ export const mainTheme = {
 
 export const buttonTheme = {
    ...mainTheme,
-   roundness: 100,
    colors: {
       ...mainTheme.colors,
       primary: '#000000',
@@ -94,7 +93,6 @@ export const buttonTheme = {
 
 export const buttonWhiteTheme = {
    ...mainTheme,
-   roundness: 100,
    colors: {
       ...mainTheme.colors,
       primary: '#fff',
@@ -129,7 +127,6 @@ export const blackHeader = {
 
 export const whitTextInput = {
    colors: {
-      background: '#fff',
       primary: '#171717',
       accent: '#ffffff',
       text: '#000000'
