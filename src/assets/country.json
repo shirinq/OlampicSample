@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Iran",
+    "dialCode": "+98",
+    "code": "ir"
+  },
+  {
+    "name": "Italy",
+    "dialCode": "+39",
+    "code": "it"
+  },
+  {
+    "name": "United States",
+    "dialCode": "+1",
+    "code": "us"
+  },
+  {
+    "name": "France",
+    "dialCode": "+33",
+    "code": "fr"
+  },
+  {
+    "name": "Turkey",
+    "dialCode": "+90",
+    "code": "tr"
+  },
+  {
+    "name": "Germany",
+    "dialCode": "+49",
+    "code": "de"
+  }
+]

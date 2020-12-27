@@ -18,10 +18,10 @@ const SignIn = () => {
    return (
       <View style={styles.container}>
          <StatusBar barStyle="dark-content" backgroundColor="#fff"/>
-         <Text style={{fontSize: 20}}>سلام!</Text>
-         <Text style={{color: '#6e768e'}}>به حساب خود وارد شوید</Text>
+         <Text style={{fontSize: 20, alignSelf:'flex-end'}}>سلام!</Text>
+         <Text style={{color: '#6e768e', alignSelf:'flex-end'}}>به حساب خود وارد شوید</Text>
          <TextInput
-            style={{marginTop: 20, marginBottom: 20, textAlign: 'right'}}
+            style={{marginTop: 20, marginBottom: 20, textAlign: 'left'}}
             keyboardType={'numeric'}
             label="موبایل"
             mode="outlined"
@@ -35,6 +35,7 @@ const SignIn = () => {
          <TextInput
             label="رمز عبور"
             error={error}
+            style={{textAlign: 'left'}}
             mode="outlined"
             right={<TextInput.Icon name='lock' />}
             theme={whitTextInput}
