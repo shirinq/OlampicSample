@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Picker, StatusBar, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text, TextInput} from 'react-native-paper';
 import {whitTextInput} from '../../Theme';
 import {CodeField, Cursor, useBlurOnFulfill, useClearByFocusCell} from 'react-native-confirmation-code-field';
-import {SIGN_IN_PAGE, strongRegex, usernameRegex} from '../../Const';
+import {SIGN_IN_PAGE, strongRegex, TERMS_PAGE, usernameRegex} from '../../Const';
 import Icon from 'react-native-vector-icons/Entypo';
 import countries from '../../assets/country.json';
 
@@ -119,7 +119,10 @@ const SignUp = ({navigation}) => {
                      value={phone}
                      onChangeText={text => setPhone(text)}/>
                </View>
-               <TouchableOpacity style={styles.buttonNextStyle} onPress={() => setStep(step + 1)}>
+               <TouchableOpacity style={styles.buttonNextStyle} onPress={() => {
+                  navigation.navigate(TERMS_PAGE);
+                  setStep(step + 1);
+               }}>
                   <Icon name="chevron-right" size={20} color="#fff"/>
                   <Text style={styles.textStyle}>تایید</Text>
                </TouchableOpacity>
@@ -216,7 +219,7 @@ const SignUp = ({navigation}) => {
                      <Text style={styles.textStyle}>بازگشت</Text>
                      <Icon name="chevron-left" size={20} color="#fff"/>
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.buttonNextStyle} onPress={() => navigation.navigate(SIGN_IN_PAGE)}>
+                  <TouchableOpacity style={styles.buttonNextStyle} onPress={() => navigation.navigate(SIGN_IN_PAGE, {phone})}>
                      <Icon name="check" size={20} color="#fff"/>
                      <Text style={styles.textStyle}>اتمام</Text>
                   </TouchableOpacity>
